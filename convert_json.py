@@ -16,7 +16,13 @@ with open(input_file, "r", encoding="utf-8") as f:
 data = {"data": []}
 for line in lines:
     array = line.strip().replace("\n", "").split("	")
-    array[1] = array[1].replace(",", " ").replace(" ", " ").replace("ː", " ").replace("̃", " ").replace("ʼ", " ")
+
+    if ", " in array[1]:
+        res = array[1].split(", ")
+        array[1] = max(res, key=len)
+
+    array[1] = array[1].replace(",", " ").replace(" ", " ").replace("ː", " ").replace("ʼ", " ")
+
     if not ' ' in array[0]:
         data["data"].append(array)
 

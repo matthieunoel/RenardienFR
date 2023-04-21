@@ -4,6 +4,7 @@
             "i",
             "j"
         ],
+        "Libelle": "i",
         "Exemples": [
             "<strong>i</strong>l",
             "v<strong>i</strong>e",
@@ -16,6 +17,7 @@
         "IPA": [
             "e"
         ],
+        "Libelle": "é",
         "Exemples": [
             "bl<strong>é</strong>",
             "nag<strong>er",
@@ -27,6 +29,7 @@
         "IPA": [
             "ɛ"
         ],
+        "Libelle": "è",
         "Exemples": [
             "p<strong>ai</strong>x",
             "bleu<strong>et</strong>",
@@ -40,6 +43,7 @@
             "a",
             "ɑ"
         ],
+        "Libelle": "a",
         "Exemples": [
             "t<strong>a</strong>ble",
             "p<strong>a</strong>tte",
@@ -56,6 +60,7 @@
             "ɔ",
             "o"
         ],
+        "Libelle": "o",
         "Exemples": [
             "m<strong>o</strong>rt",
             "angl<strong>o</strong>ph<strong>o</strong>ne",
@@ -73,6 +78,7 @@
             "u",
             "w"
         ],
+        "Libelle": "ou",
         "Exemples": [
             "r<strong>ou</strong>e",
             "c<strong>oû</strong>t",
@@ -87,6 +93,7 @@
             "ɥ",
             "ʊ"
         ],
+        "Libelle": "u",
         "Exemples": [
             "n<strong>u</strong>e",
             "têt<strong>u</strong>",
@@ -101,6 +108,7 @@
             "œ",
             "ə"
         ],
+        "Libelle": "eu",
         "Exemples": [
             "bl<strong>eu</strong>",
             "v<strong>œu</strong>",
@@ -117,15 +125,18 @@
         "Type": "V",
         "IPA": [
             "ẽ",
-            "œ̃"
+            "œ̃",
+            "ɛ̃"
         ],
+        "Libelle": "in",
         "Exemples": [
             "mat<strong>in</strong>",
             "pl<strong>ein</strong>",
             "m<strong>ain</strong>",
             "l<strong>un</strong>di",
             "déf<strong>un</strong>t",
-            "h<strong>um</strong>ble"
+            "h<strong>um</strong>ble",
+            "<strong>in</strong>stant"
         ]
     },
     {
@@ -133,6 +144,7 @@
         "IPA": [
             "ã"
         ],
+        "Libelle": "an",
         "Exemples": [
             "r<strong>an</strong>g",
             "d<strong>en</strong>t",
@@ -145,6 +157,7 @@
         "IPA": [
             "ɔ̃"
         ],
+        "Libelle": "on",
         "Exemples": [
             "b<strong>on</strong>",
             "n<strong>om</strong>bre"
@@ -155,6 +168,7 @@
         "IPA": [
             "p"
         ],
+        "Libelle": "p",
         "Exemples": [
             "<strong>p</strong>atrie",
             "cou<strong>p</strong>e",
@@ -166,6 +180,7 @@
         "IPA": [
             "t"
         ],
+        "Libelle": "t",
         "Exemples": [
             "<strong>t</strong>erre",
             "vi<strong>t</strong>e",
@@ -178,6 +193,7 @@
         "IPA": [
             "k"
         ],
+        "Libelle": "k",
         "Exemples": [
             "<strong>c</strong>ol",
             "<strong>qu</strong>i",
@@ -190,6 +206,7 @@
         "IPA": [
             "b"
         ],
+        "Libelle": "b",
         "Exemples": [
             "<strong>b</strong>as",
             "no<strong>b</strong>le",
@@ -201,6 +218,7 @@
         "IPA": [
             "d"
         ],
+        "Libelle": "d",
         "Exemples": [
             "<strong>d</strong>anse",
             "lai<strong>d</strong>e",
@@ -212,6 +230,7 @@
         "IPA": [
             "g"
         ],
+        "Libelle": "g",
         "Exemples": [
             "<strong>g</strong>auche",
             "va<strong>gu</strong>e",
@@ -223,6 +242,7 @@
         "IPA": [
             "f"
         ],
+        "Libelle": "f",
         "Exemples": [
             "<strong>f</strong>ou",
             "veu<strong>f</strong>",
@@ -234,6 +254,7 @@
         "IPA": [
             "v"
         ],
+        "Libelle": "v",
         "Exemples": [
             "<strong>v</strong>rai",
             "trê<strong>v</strong>e",
@@ -245,6 +266,7 @@
         "IPA": [
             "s"
         ],
+        "Libelle": "s",
         "Exemples": [
             "<strong>s</strong>e",
             "<strong>c</strong>e",
@@ -259,6 +281,7 @@
         "IPA": [
             "z"
         ],
+        "Libelle": "z",
         "Exemples": [
             "<strong>z</strong>oo",
             "a<strong>z</strong>ote",
@@ -271,6 +294,7 @@
         "IPA": [
             "ʃ"
         ],
+        "Libelle": "ch",
         "Exemples": [
             "<strong>ch</strong>eval",
             "va<strong>ch</strong>e",
@@ -282,6 +306,7 @@
         "IPA": [
             "ʒ"
         ],
+        "Libelle": "j",
         "Exemples": [
             "<strong>j</strong>ambe",
             "gor<strong>g</strong>e",
@@ -293,6 +318,7 @@
         "IPA": [
             "l"
         ],
+        "Libelle": "l",
         "Exemples": [
             "<strong>l</strong>une",
             "so<strong>l</strong>eil"
@@ -304,6 +330,7 @@
             "ʀ",
             "ʁ"
         ],
+        "Libelle": "r",
         "Exemples": [
             "<strong>r</strong>iz",
             "cui<strong>r</strong>",
@@ -315,6 +342,7 @@
         "IPA": [
             "m"
         ],
+        "Libelle": "m",
         "Exemples": [
             "<strong>m</strong>usique",
             "a<strong>m</strong>our",
@@ -326,6 +354,7 @@
         "IPA": [
             "n"
         ],
+        "Libelle": "n",
         "Exemples": [
             "<strong>n</strong>uit",
             "so<strong>nn</strong>er",
@@ -338,6 +367,7 @@
             "ɲ",
             "ŋ"
         ],
+        "Libelle": "gn/ng",
         "Exemples": [
             "ga<strong>gn</strong>er",
             "li<strong>gn</strong>e",

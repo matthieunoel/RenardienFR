@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 
 <head>
     <meta charset="UTF-8">
@@ -18,22 +18,36 @@
             padding: 2em;
             padding-bottom: 0;
             display: flex;
-            justify-content: center;
+            justify-content: start;
             align-items: center;
             min-height: calc(100vh - (2 * 2em));
             width: calc(100vw - (2 * 2em));
             flex-flow: column;
             overflow-x: hidden;
             background-color: #1e1e1f;
-            font-family: 'Courier New', Courier, monospace;
+            font-family: Arial, Helvetica, sans-serif;
         }
         
-        html body table {
+        section {
+            width: 100%;
             margin-bottom: 2em;
         }
         
-        html body table tr td,
-        html body p {
+        h1 {
+            background-color: #3c3c42;
+            color: white;
+            padding: 2vh 5vh;
+            font-size: xx-large;
+        }
+        
+        table {
+            /* margin-bottom: 2em; */
+            width: 100%;
+        }
+        
+        table tr td,
+        table tr th,
+        p {
             color: white;
             background-color: #3c3c42;
             border: 1px black solid;
@@ -45,27 +59,45 @@
         
         .tunic {
             font-family: Tunic;
+            font-size: 2em;
         }
         
-        #tunicTest {
+        #inputSection {
             font-size: 2.5em;
+        }
+        
+        #inputSection input {
+            width: 90%;
+            height: 95%;
+            color: white;
+            background-color: #5d5d64;
+            border: none;
+            min-width: 1em;
+            min-height: 1.5em;
+            padding: 0.3em;
+            text-align: center;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.9em;
+        }
+        
+        #tablesSection {
+            display: flex;
+            flex-flow: row;
+            justify-content: space-between;
+            align-items: start;
+        }
+        
+        #tablesSection table {
+            margin: 0px 1em;
+            width: 100%;
+        }
+        
+        #tablesSection table .tunic {
+            font-weight: bold;
         }
     </style>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-
-    <script>
-        // ##### Init consonnes_tunic & voyelles_tunic #####
-
-        const firstString = "b d f ɡ h dʒ k ɫ m n ŋ p ɹ s ʃ ʒ t T ð tʃ v w j z";
-        const secondString = "ə æ ɪ ʊ ɛ ɔ ɑ oʊ aɪ ɑɹ ɝ u i ɔɪ ɔɹ eɪ iɹ ɛɹ ʊs aʊ";
-
-        const consonnes_tunic = firstString.split(" ");
-        const voyelles_tunic = secondString.split(" ");
-
-        // console.debug("voyelles :", voyelles_tunic);
-        // console.debug("consonnes :", consonnes_tunic);
-    </script>
 
     <script>
         // ##### Init fr_FR #####
@@ -87,9 +119,9 @@
             }
         }
 
-        checkFlag_fr_FR_words_Initialised(function() {
-            // console.debug("fr_FR :", fr_FR_words);
-        });
+        // checkFlag_fr_FR_words_Initialised(function() {
+        //     console.debug("fr_FR :", fr_FR_words);
+        // });
     </script>
 
     <script>
@@ -100,6 +132,12 @@
         $.getJSON("./fr_FR_vocal.json",
             (data) => {
                 fr_FR_vocal = data;
+
+                const firstString = "b d f ɡ h dʒ k ɫ m n ŋ p ɹ s ʃ ʒ t T ð tʃ v w j z";
+                const secondString = "ə æ ɪ ʊ ɛ ɔ ɑ oʊ aɪ ɑɹ ɝ u i ɔɪ ɔɹ eɪ iɹ ɛɹ ʊs aʊ";
+
+                const consonnes_tunic = firstString.split(" ");
+                const voyelles_tunic = secondString.split(" ");
 
                 let indexV = 0;
                 let indexC = 0;
@@ -131,128 +169,66 @@
 
 <body>
 
-    <table id="tunicTest">
-        <tr>
-            <td>
-                Bonjour toi
-            </td>
-        </tr>
-        <tr>
-            <td>
-                Bonjour toi
-            </td>
-        </tr>
-        <tr>
-            <td class="tunic">
-                Bonjour toi
-            </td>
-        </tr>
-    </table>
+    <section>
+        <h1>Traduction français vers renardien (ou Tunic / Trunic)</h1>
+    </section>
 
-    <table id="trunicDoubleEntry">
-    </table>
+    <section>
+        <table id="inputSection">
+            <tr>
+                <td>
+                    <input type="text" value="Chemin">
+                </td>
+            </tr>
+            <tr>
+                <td>~</td>
+            </tr>
+            <tr>
+                <td class="tunic">~</td>
+            </tr>
+        </table>
+    </section>
+
+    <section id="tablesSection">
+        <table id="tableVoyelles">
+            <tr>
+                <th>Son</th>
+                <th>Rune</th>
+                <th>Exemples</th>
+            </tr>
+        </table>
+
+        <table id="tableConsonnes">
+            <tr>
+                <th>Son</th>
+                <th>Rune</th>
+                <th>Exemples</th>
+            </tr>
+        </table>
+    </section>
 
     <!-- Scripts section -->
 
     <script>
-        checkFlag_fr_FR_words_Initialised(function() {
-            let table = $("#tunicTest");
-            // console.debug("table :", table);
-            let the2ndLineTd = table.children().first().children("tr:nth-child(2)").children("td:first-child").get(0);
-            // console.debug("the2ndLineTd :", the2ndLineTd);
+        function FrToVocalFr(input) {
 
-            let texts = the2ndLineTd.innerText.trim().split(" ");
-            // console.debug("texts :", texts);
+            let words = input.trim().split(" ");
+            // console.debug("words :", words);
 
-            let newTexts = [];
-            texts.forEach(text => {
-                newTexts.push(fr_FR_words.find(e => e[0].toLowerCase() == text.toLowerCase())[1].replaceAll("/", ""));
-            });
-            // console.debug("newTexts :", newTexts);
-
-            the2ndLineTd.innerText = newTexts.join(" ");
-
-
-
-
-            // table.children().first().children("tr:nth-child(3)").children("td:first-child").get(0).innerText = newTexts.join(" ");
-
-        });
-    </script>
-
-    <script>
-        (function() {
-            // let id = "trunicDoubleEntry";
-
-            // const table = document.createElement("table");
-
-            // for (let i = 0; i < voyelles.length; i++) {
-            //     const row = document.createElement("tr");
-
-            //     for (let j = 0; j < consonnes.length; j++) {
-            //         const cell = document.createElement("td");
-            //         cell.textContent = consonnes[j] + voyelles[i];
-            //         row.appendChild(cell);
-            //     }
-
-            //     table.appendChild(row);
-            // }
-
-            // document.getElementById(id).innerHTML = table.innerHTML;
-        })();
-    </script>
-
-    <script>
-        checkFlag_fr_FR_words_Initialised(function() {
-            let id = "trunicDoubleEntry";
-
-            const table = document.createElement("table");
-
-            let voyelles_fr = fr_FR_vocal.filter(e => {
-                return e.Type === "V"
+            let res = [];
+            words.forEach(word => {
+                const newWord = fr_FR_words.find(e => e[0].toLowerCase() == word.toLowerCase());
+                if (newWord == undefined) {
+                    res.push("?")
+                } else {
+                    res.push(newWord[1].replaceAll("/", ""));
+                }
             });
 
-            let consonnes_fr = fr_FR_vocal.filter(e => {
-                return e.Type === "C"
-            })
+            // console.debug("res :", res);
+            return res.join(" ");
+        }
 
-            // console.debug("voyelles_fr :", voyelles_fr);
-            // console.debug("consonnes_fr :", consonnes_fr);
-
-            const rowVoyelle = document.createElement("tr");
-            const cellVoid = document.createElement("td");
-            rowVoyelle.appendChild(cellVoid);
-
-            for (let i = 0; i < voyelles_fr.length; i++) {
-                const cell = document.createElement("td");
-                cell.innerText = "/" + voyelles_fr[i].IPA.join("/, /") + "/"
-                rowVoyelle.appendChild(cell);
-            }
-
-            table.appendChild(rowVoyelle);
-
-            // for (let i = 0; i < consonnes_fr.length; i++) {
-            //     const consonne_fr = consonnes_fr[i];
-
-            // }
-
-            // for (let i = 0; i < voyelles.length; i++) {
-            //     const row = document.createElement("tr");
-
-            //     for (let j = 0; j < consonnes.length; j++) {
-            //         const cell = document.createElement("td");
-            //         cell.textContent = consonnes[j] + voyelles[i];
-            //         row.appendChild(cell);
-            //     }
-
-            //     table.appendChild(row);
-            // }
-
-            document.getElementById(id).innerHTML = table.innerHTML;
-        });
-    </script>
-
-    <script>
         function FrVocalToTunic(input) {
 
             let voyelles_fr = fr_FR_vocal.filter(e => {
@@ -263,28 +239,156 @@
                 return e.Type === "C"
             })
 
-            let res = "";
-            Array.from(input).forEach(function(character) {
+            let res = [];
+
+            for (let i = 0; i < Array.from(input).length; i++) {
+                let character = Array.from(input)[i];
+
+                // console.log("character :", character);
+
                 if (character === " ") {
-                    res += " ";
+                    res.push(" ");
                     return;
                 }
                 var vocal = fr_FR_vocal.filter(e => {
                     return e.IPA.includes(character);
                 })
-                res += vocal[0].Tunic;
-            });
 
-            return res;
+                if (vocal[0] == undefined) {
+                    if (Array.from(input)[i - 1] != undefined) {
+                        character = Array.from(input)[i - 1] + character;
+                        vocal = fr_FR_vocal.filter(e => {
+                            return e.IPA.includes(character);
+                        });
+                        if (vocal[0] != undefined) {
+                            res[res.length - 1] = vocal[0].Tunic;
+                        } else {
+                            res.push("?");
+                        }
+                    }
+                } else {
+                    res.push(vocal[0].Tunic);
+                }
+            }
+
+            // Array.from(input).forEach(function(character) {
+            //     if (character === " ") {
+            //         res += " ";
+            //         return;
+            //     }
+            //     var vocal = fr_FR_vocal.filter(e => {
+            //         return e.IPA.includes(character);
+            //     })
+
+            //     if (vocal[0] == undefined) {
+            //         console.warn(character);
+            //         // res += character;
+            //         // res += "?"
+            //     } else {
+            //         res += vocal[0].Tunic;
+            //     }
+            // });
+
+            // console.log("res :", res);
+
+            return res.join("");
 
         }
 
-        checkFlag_fr_FR_vocal_Initialised(function() {
+        function updateBloc() {
+            var input = $("#inputSection").children().first().children("tr:nth-child(1)").children("td:first-child").children("input").get(0).value;
+            var vocal = FrToVocalFr(input);
+            var tunic = FrVocalToTunic(vocal);
 
-            var test = FrVocalToTunic("bɔʒuʁ twa");
-            // console.log("\"bɔʒuʁ twa\" => \"" + test + "\"");
+            console.log("Result :", input, vocal, tunic);
 
-            $("#tunicTest").children().first().children("tr:nth-child(3)").children("td:first-child").get(0).innerText = test;
+            $("#inputSection").children().first().children("tr:nth-child(2)").children("td:first-child").get(0).innerText = vocal;
+            $("#inputSection").children().first().children("tr:nth-child(3)").children("td:first-child").get(0).innerText = tunic;
+        }
+
+        checkFlag_fr_FR_words_Initialised(function() {
+            checkFlag_fr_FR_vocal_Initialised(function() {
+                updateBloc();
+            });
+        });
+
+        $("#inputSection").children().first().children("tr:nth-child(1)").children("td:first-child").children("input").bind('input', updateBloc);
+    </script>
+
+    <!-- <script>
+        (function() {
+            let id = "tableVoyelles";
+
+            const table = document.createElement("table");
+
+            for (let i = 0; i < voyelles.length; i++) {
+                const row = document.createElement("tr");
+
+                for (let j = 0; j < consonnes.length; j++) {
+                    const cell = document.createElement("td");
+                    cell.textContent = consonnes[j] + voyelles[i];
+                    row.appendChild(cell);
+                }
+
+                table.appendChild(row);
+            }
+
+            document.getElementById(id).innerHTML = table.innerHTML;
+        })();
+    </script> -->
+
+    <script>
+        checkFlag_fr_FR_words_Initialised(function() {
+
+            let voyelles_fr = fr_FR_vocal.filter(e => {
+                return e.Type === "V"
+            });
+
+            let consonnes_fr = fr_FR_vocal.filter(e => {
+                return e.Type === "C"
+            })
+
+            const tableVoyelles = document.getElementById("tableVoyelles");
+
+            for (let i = 0; i < voyelles_fr.length; i++) {
+                const row = document.createElement("tr");
+
+                const cell1 = document.createElement("td");
+                cell1.innerText = "/" + voyelles_fr[i].IPA.join("/, /") + "/";
+                row.appendChild(cell1);
+
+                const cell2 = document.createElement("td");
+                cell2.classList.add("tunic");
+                cell2.innerText = voyelles_fr[i].Tunic;
+                row.appendChild(cell2);
+
+                const cell3 = document.createElement("td");
+                cell3.innerHTML = voyelles_fr[i].Exemples.join(", ");
+                row.appendChild(cell3);
+
+                tableVoyelles.appendChild(row);
+            }
+
+            const tableConsonnes = document.getElementById("tableConsonnes");
+
+            for (let i = 0; i < consonnes_fr.length; i++) {
+                const row = document.createElement("tr");
+
+                const cell1 = document.createElement("td");
+                cell1.innerText = "/" + consonnes_fr[i].IPA.join("/, /") + "/";
+                row.appendChild(cell1);
+
+                const cell2 = document.createElement("td");
+                cell2.classList.add("tunic");
+                cell2.innerText = consonnes_fr[i].Tunic;
+                row.appendChild(cell2);
+
+                const cell3 = document.createElement("td");
+                cell3.innerHTML = consonnes_fr[i].Exemples.join(", ");
+                row.appendChild(cell3);
+
+                tableConsonnes.appendChild(row);
+            }
 
         });
     </script>
