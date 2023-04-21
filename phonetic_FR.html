@@ -202,7 +202,7 @@
 
         voyelles.forEach(voyelle => {
             fr_Vocal.push({
-                type: "V",
+                Type: "V",
                 IPA: voyelle.IPA,
                 Exemples: voyelle.Exemples
             });
@@ -210,44 +210,31 @@
 
         consonnes.forEach(consonne => {
             fr_Vocal.push({
-                type: "C",
+                Type: "C",
                 IPA: consonne.IPA,
                 Exemples: consonne.Exemples
             });
         });
+    </script>
 
-        navigator.clipboard.writeText(JSON.stringify(fr_Vocal));
-
-
-
-
+    <script>
         let output_table = $("#output_table").get(0);
 
-        for (let i = 0; i < voyelles.length; i++) {
+        for (let i = 0; i < fr_Vocal.length; i++) {
             const row = document.createElement("tr");
             let cell1 = document.createElement("td");
-            cell1.textContent = "Voyelle"
+
+            if (fr_Vocal[i].Type == "V") {
+                cell1.textContent = "Voyelle"
+            } else {
+                cell1.textContent = "Consonne"
+            }
             row.appendChild(cell1);
             let cell2 = document.createElement("td");
-            cell2.textContent = "/" + voyelles[i].IPA.join("/, /") + "/"
+            cell2.textContent = "/" + fr_Vocal[i].IPA.join("/, /") + "/"
             row.appendChild(cell2);
             let cell3 = document.createElement("td");
-            cell3.innerHTML = voyelles[i].Exemples.join(", ")
-            row.appendChild(cell3);
-
-            output_table.appendChild(row);
-        }
-
-        for (let i = 0; i < consonnes.length; i++) {
-            const row = document.createElement("tr");
-            let cell1 = document.createElement("td");
-            cell1.textContent = "Consonne"
-            row.appendChild(cell1);
-            let cell2 = document.createElement("td");
-            cell2.textContent = "/" + consonnes[i].IPA.join("/, /") + "/"
-            row.appendChild(cell2);
-            let cell3 = document.createElement("td");
-            cell3.innerHTML = consonnes[i].Exemples.join(", ")
+            cell3.innerHTML = fr_Vocal[i].Exemples.join(", ")
             row.appendChild(cell3);
 
             output_table.appendChild(row);
@@ -309,27 +296,7 @@
 
     <script>
         function copyToClipboard() {
-
-            let res = [];
-
-            voyelles.forEach(voyelle => {
-                res.push({
-                    type: "V",
-                    IPA: voyelle.IPA,
-                    Exemples: voyelle.Exemples
-                });
-            });
-
-            consonnes.forEach(consonne => {
-                res.push({
-                    type: "C",
-                    IPA: consonne.IPA,
-                    Exemples: consonne.Exemples
-                });
-            });
-
-            navigator.clipboard.writeText(JSON.stringify(res));
-
+            navigator.clipboard.writeText(JSON.stringify(fr_Vocal));
         }
     </script>
 

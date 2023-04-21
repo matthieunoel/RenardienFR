@@ -1,0 +1,347 @@
+[{
+        "Type": "V",
+        "IPA": [
+            "i",
+            "j"
+        ],
+        "Exemples": [
+            "<strong>i</strong>l",
+            "v<strong>i</strong>e",
+            "l<strong>y</strong>s",
+            "except<strong>i</strong>on"
+        ]
+    },
+    {
+        "Type": "V",
+        "IPA": [
+            "e"
+        ],
+        "Exemples": [
+            "bl<strong>é</strong>",
+            "nag<strong>er",
+            "é</strong>t<strong>é</strong>"
+        ]
+    },
+    {
+        "Type": "V",
+        "IPA": [
+            "ɛ"
+        ],
+        "Exemples": [
+            "p<strong>ai</strong>x",
+            "bleu<strong>et</strong>",
+            "p<strong>e</strong>rsil",
+            "bal<strong>ei</strong>ne"
+        ]
+    },
+    {
+        "Type": "V",
+        "IPA": [
+            "a",
+            "ɑ"
+        ],
+        "Exemples": [
+            "t<strong>a</strong>ble",
+            "p<strong>a</strong>tte",
+            "mor<strong>a</strong>l",
+            "b<strong>a</strong>s",
+            "p<strong>â</strong>te",
+            "dr<strong>a</strong>p",
+            "écl<strong>a</strong>t"
+        ]
+    },
+    {
+        "Type": "V",
+        "IPA": [
+            "ɔ",
+            "o"
+        ],
+        "Exemples": [
+            "m<strong>o</strong>rt",
+            "angl<strong>o</strong>ph<strong>o</strong>ne",
+            "acr<strong>o</strong>p<strong>o</strong>le",
+            "rh<strong>u</strong>m",
+            "d<strong>o</strong>s",
+            "<strong>au</strong>be",
+            "<strong>eau</strong>",
+            "r<strong>ô</strong>le"
+        ]
+    },
+    {
+        "Type": "V",
+        "IPA": [
+            "u",
+            "w"
+        ],
+        "Exemples": [
+            "r<strong>ou</strong>e",
+            "c<strong>oû</strong>t",
+            "b<strong>oi</strong>te (ou+a)",
+            "<strong>w</strong>apiti"
+        ]
+    },
+    {
+        "Type": "V",
+        "IPA": [
+            "y",
+            "ɥ",
+            "ʊ"
+        ],
+        "Exemples": [
+            "n<strong>u</strong>e",
+            "têt<strong>u</strong>",
+            "br<strong>u</strong>ine",
+            "bro<strong>w</strong>ser"
+        ]
+    },
+    {
+        "Type": "V",
+        "IPA": [
+            "ø",
+            "œ",
+            "ə"
+        ],
+        "Exemples": [
+            "bl<strong>eu</strong>",
+            "v<strong>œu</strong>",
+            "j<strong>eû</strong>ne",
+            "b<strong>eu</strong>rre",
+            "m<strong>eu</strong>ble",
+            "<strong>œu</strong>f",
+            "l<strong>e</strong>",
+            "d<strong>e</strong>nier",
+            "m<strong>e</strong>nuet"
+        ]
+    },
+    {
+        "Type": "V",
+        "IPA": [
+            "ẽ",
+            "œ̃"
+        ],
+        "Exemples": [
+            "mat<strong>in</strong>",
+            "pl<strong>ein</strong>",
+            "m<strong>ain</strong>",
+            "l<strong>un</strong>di",
+            "déf<strong>un</strong>t",
+            "h<strong>um</strong>ble"
+        ]
+    },
+    {
+        "Type": "V",
+        "IPA": [
+            "ã"
+        ],
+        "Exemples": [
+            "r<strong>an</strong>g",
+            "d<strong>en</strong>t",
+            "t<strong>em</strong>ps",
+            "<strong>am</strong>bre"
+        ]
+    },
+    {
+        "Type": "V",
+        "IPA": [
+            "ɔ̃"
+        ],
+        "Exemples": [
+            "b<strong>on</strong>",
+            "n<strong>om</strong>bre"
+        ]
+    },
+    {
+        "Type": "C",
+        "IPA": [
+            "p"
+        ],
+        "Exemples": [
+            "<strong>p</strong>atrie",
+            "cou<strong>p</strong>e",
+            "ja<strong>pp</strong>er"
+        ]
+    },
+    {
+        "Type": "C",
+        "IPA": [
+            "t"
+        ],
+        "Exemples": [
+            "<strong>t</strong>erre",
+            "vi<strong>t</strong>e",
+            "<strong>th</strong>é",
+            "be<strong>tt</strong>e"
+        ]
+    },
+    {
+        "Type": "C",
+        "IPA": [
+            "k"
+        ],
+        "Exemples": [
+            "<strong>c</strong>ol",
+            "<strong>qu</strong>i",
+            "ba<strong>c</strong>",
+            "<strong>k</strong>aya<strong>k</strong>"
+        ]
+    },
+    {
+        "Type": "C",
+        "IPA": [
+            "b"
+        ],
+        "Exemples": [
+            "<strong>b</strong>as",
+            "no<strong>b</strong>le",
+            "ra<strong>bb</strong>in"
+        ]
+    },
+    {
+        "Type": "C",
+        "IPA": [
+            "d"
+        ],
+        "Exemples": [
+            "<strong>d</strong>anse",
+            "lai<strong>d</strong>e",
+            "a<strong>dd</strong>itif"
+        ]
+    },
+    {
+        "Type": "C",
+        "IPA": [
+            "g"
+        ],
+        "Exemples": [
+            "<strong>g</strong>auche",
+            "va<strong>gu</strong>e",
+            "<strong>gu</strong>ide"
+        ]
+    },
+    {
+        "Type": "C",
+        "IPA": [
+            "f"
+        ],
+        "Exemples": [
+            "<strong>f</strong>ou",
+            "veu<strong>f</strong>",
+            "<strong>ph</strong>rase"
+        ]
+    },
+    {
+        "Type": "C",
+        "IPA": [
+            "v"
+        ],
+        "Exemples": [
+            "<strong>v</strong>rai",
+            "trê<strong>v</strong>e",
+            "<strong>w</strong>agon"
+        ]
+    },
+    {
+        "Type": "C",
+        "IPA": [
+            "s"
+        ],
+        "Exemples": [
+            "<strong>s</strong>e",
+            "<strong>c</strong>e",
+            "balan<strong>ç</strong>oire",
+            "tre<strong>ss</strong>e",
+            "ra<strong>t</strong>ion",
+            "<strong>sc</strong>ience"
+        ]
+    },
+    {
+        "Type": "C",
+        "IPA": [
+            "z"
+        ],
+        "Exemples": [
+            "<strong>z</strong>oo",
+            "a<strong>z</strong>ote",
+            "poi<strong>s</strong>on",
+            "pri<strong>s</strong>e"
+        ]
+    },
+    {
+        "Type": "C",
+        "IPA": [
+            "ʃ"
+        ],
+        "Exemples": [
+            "<strong>ch</strong>eval",
+            "va<strong>ch</strong>e",
+            "<strong>sch</strong>isme"
+        ]
+    },
+    {
+        "Type": "C",
+        "IPA": [
+            "ʒ"
+        ],
+        "Exemples": [
+            "<strong>j</strong>ambe",
+            "gor<strong>g</strong>e",
+            "<strong>ge</strong>ai"
+        ]
+    },
+    {
+        "Type": "C",
+        "IPA": [
+            "l"
+        ],
+        "Exemples": [
+            "<strong>l</strong>une",
+            "so<strong>l</strong>eil"
+        ]
+    },
+    {
+        "Type": "C",
+        "IPA": [
+            "ʀ",
+            "ʁ"
+        ],
+        "Exemples": [
+            "<strong>r</strong>iz",
+            "cui<strong>r</strong>",
+            "p<strong>r</strong>ix"
+        ]
+    },
+    {
+        "Type": "C",
+        "IPA": [
+            "m"
+        ],
+        "Exemples": [
+            "<strong>m</strong>usique",
+            "a<strong>m</strong>our",
+            "gra<strong>mm</strong>e"
+        ]
+    },
+    {
+        "Type": "C",
+        "IPA": [
+            "n"
+        ],
+        "Exemples": [
+            "<strong>n</strong>uit",
+            "so<strong>nn</strong>er",
+            "bé<strong>n</strong>ir"
+        ]
+    },
+    {
+        "Type": "C",
+        "IPA": [
+            "ɲ",
+            "ŋ"
+        ],
+        "Exemples": [
+            "ga<strong>gn</strong>er",
+            "li<strong>gn</strong>e",
+            "joggi<strong>ng</strong>"
+        ]
+    }
+]
