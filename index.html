@@ -193,6 +193,7 @@
         <table id="tableVoyelles">
             <tr>
                 <th>Son</th>
+                <th>Lettre</th>
                 <th>Rune</th>
                 <th>Exemples</th>
             </tr>
@@ -201,6 +202,7 @@
         <table id="tableConsonnes">
             <tr>
                 <th>Son</th>
+                <th>Lettre</th>
                 <th>Rune</th>
                 <th>Exemples</th>
             </tr>
@@ -219,7 +221,59 @@
             words.forEach(word => {
                 const newWord = fr_FR_words.find(e => e[0].toLowerCase() == word.toLowerCase());
                 if (newWord == undefined) {
-                    res.push("?")
+                    // gestion des '
+                    if (word.indexOf("'") > -1) {
+                        let subWords = word.split("'");
+                        for (let i = 0; i < subWords.length; i++) {
+                            const subWord = subWords[i];
+                            let newSubWord = undefined;
+                            if (i == 0) {
+                                newSubWord = fr_FR_words.find(e => e[0].toLowerCase() == (subWord.toLowerCase() + "'"))
+                                console.log();
+                                if (newSubWord == undefined) {
+                                    newSubWord = fr_FR_words.find(e => e[0].toLowerCase() == subWord.toLowerCase())
+                                }
+                                if (newSubWord == undefined) {
+                                    newSubWord = fr_FR_words.find(e => e[0].toLowerCase() == ("'" + subWord.toLowerCase()))
+                                }
+                            } else if (i == (subWords.length - 1)) {
+                                newSubWord = fr_FR_words.find(e => e[0].toLowerCase() == ("'" + subWord.toLowerCase()))
+                                if (newSubWord == undefined) {
+                                    newSubWord = fr_FR_words.find(e => e[0].toLowerCase() == (subWord.toLowerCase() + "'"))
+                                }
+                                if (newSubWord == undefined) {
+                                    newSubWord = fr_FR_words.find(e => e[0].toLowerCase() == subWord.toLowerCase())
+                                }
+                            } else {
+                                newSubWord = fr_FR_words.find(e => e[0].toLowerCase() == subWord.toLowerCase())
+                                if (newSubWord == undefined) {
+                                    newSubWord = fr_FR_words.find(e => e[0].toLowerCase() == (subWord.toLowerCase() + "'"))
+                                }
+                                if (newSubWord == undefined) {
+                                    newSubWord = fr_FR_words.find(e => e[0].toLowerCase() == ("'" + subWord.toLowerCase()))
+                                }
+                            }
+
+                            if (newSubWord == undefined) {
+                                res.push("?");
+                            } else {
+                                if (i == 0) {
+                                    res.push(newSubWord[1].replaceAll("/", ""));
+                                } else {
+                                    res[res.length - 1] = res[res.length - 1] + newSubWord[1].replaceAll("/", "");
+                                }
+                            }
+                        }
+                    } else if (word.indexOf('oe') > -1) {
+                        const newWordAgain = fr_FR_words.find(e => e[0].toLowerCase() == word.replaceAll("oe", "œ").toLowerCase());
+                        if (newWordAgain == undefined) {
+                            res.push("?");
+                        } else {
+                            res.push(newWordAgain[1].replaceAll("/", ""));
+                        }
+                    } else {
+                        res.push("?");
+                    }
                 } else {
                     res.push(newWord[1].replaceAll("/", ""));
                 }
@@ -248,14 +302,14 @@
 
                 if (character === " ") {
                     res.push(" ");
-                    return;
+                    continue;
                 }
                 var vocal = fr_FR_vocal.filter(e => {
                     return e.IPA.includes(character);
                 })
 
                 if (vocal[0] == undefined) {
-                    if (Array.from(input)[i - 1] != undefined) {
+                    if (Array.from(input)[i - 1] != undefined && Array.from(input)[i - 1] != " ") {
                         character = Array.from(input)[i - 1] + character;
                         vocal = fr_FR_vocal.filter(e => {
                             return e.IPA.includes(character);
@@ -271,26 +325,6 @@
                 }
             }
 
-            // Array.from(input).forEach(function(character) {
-            //     if (character === " ") {
-            //         res += " ";
-            //         return;
-            //     }
-            //     var vocal = fr_FR_vocal.filter(e => {
-            //         return e.IPA.includes(character);
-            //     })
-
-            //     if (vocal[0] == undefined) {
-            //         console.warn(character);
-            //         // res += character;
-            //         // res += "?"
-            //     } else {
-            //         res += vocal[0].Tunic;
-            //     }
-            // });
-
-            // console.log("res :", res);
-
             return res.join("");
 
         }
@@ -300,7 +334,7 @@
             var vocal = FrToVocalFr(input);
             var tunic = FrVocalToTunic(vocal);
 
-            console.log("Result :", input, vocal, tunic);
+            console.log("Result : \"" + input + "\", \"" + vocal + "\", \"" + tunic + "\"");
 
             $("#inputSection").children().first().children("tr:nth-child(2)").children("td:first-child").get(0).innerText = vocal;
             $("#inputSection").children().first().children("tr:nth-child(3)").children("td:first-child").get(0).innerText = tunic;
@@ -358,13 +392,17 @@
                 row.appendChild(cell1);
 
                 const cell2 = document.createElement("td");
-                cell2.classList.add("tunic");
-                cell2.innerText = voyelles_fr[i].Tunic;
+                cell2.innerText = voyelles_fr[i].Libelle;
                 row.appendChild(cell2);
 
                 const cell3 = document.createElement("td");
-                cell3.innerHTML = voyelles_fr[i].Exemples.join(", ");
+                cell3.classList.add("tunic");
+                cell3.innerText = voyelles_fr[i].Tunic;
                 row.appendChild(cell3);
+
+                const cell4 = document.createElement("td");
+                cell4.innerHTML = voyelles_fr[i].Exemples.join(", ");
+                row.appendChild(cell4);
 
                 tableVoyelles.appendChild(row);
             }
@@ -379,13 +417,17 @@
                 row.appendChild(cell1);
 
                 const cell2 = document.createElement("td");
-                cell2.classList.add("tunic");
-                cell2.innerText = consonnes_fr[i].Tunic;
+                cell2.innerText = consonnes_fr[i].Libelle;
                 row.appendChild(cell2);
 
                 const cell3 = document.createElement("td");
-                cell3.innerHTML = consonnes_fr[i].Exemples.join(", ");
+                cell3.classList.add("tunic");
+                cell3.innerText = consonnes_fr[i].Tunic;
                 row.appendChild(cell3);
+
+                const cell4 = document.createElement("td");
+                cell4.innerHTML = consonnes_fr[i].Exemples.join(", ");
+                row.appendChild(cell4);
 
                 tableConsonnes.appendChild(row);
             }
