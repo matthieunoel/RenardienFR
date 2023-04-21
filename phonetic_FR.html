@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phonetic FR</title>
+
+    <style>
+        html {
+            background-color: #f0f8ff;
+        }
+        
+        html body {
+            margin: 2em;
+            width: calc(100vw - 2 * 2em);
+            min-height: calc(100vh - 2 * 2em);
+            background-color: #3b3647;
+            box-shadow: inset 5px 5px 25px #00000032;
+            color: #fff;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            display: flex;
+            flex-flow: row;
+            justify-content: space-around;
+            align-items: start;
+        }
+        
+        html body section {
+            margin-top: 1em;
+            /* background-color: #4b4162; */
+            background-color: #f0f8ff;
+            color: #000;
+            box-shadow: 5px 5px 25px #00000032;
+            padding: 1em;
+            margin: 3em 0em;
+        }
+        
+        html body ul {
+            list-style: none;
+        }
+        
+        html body section table {
+            border-collapse: collapse;
+            border: 1px solid #000;
+        }
+        
+        html body section table tr:nth-child(odd) {
+            background-color: #d4dee6;
+        }
+        
+        html body section table tr th,
+        html body section table tr td {
+            padding: 0.5em 1em;
+            min-width: 2em;
+            text-align: left;
+        }
+        
+        html body section table tr th {
+            background-color: #2a2b2b;
+            color: #fff;
+        }
+        
+        html body section code {
+            font-size: x-small;
+            width: 10vw;
+            margin-left: 1em;
+            background-color: #2a2b2b;
+            color: white;
+            overflow-x: hidden;
+            padding: 0.5em;
+        }
+        
+        #output button {
+            margin-bottom: 1em;
+        }
+    </style>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+    <script>
+        let fr_FR;
+        let fr_FR_Initialised = false;
+        $.getJSON("./fr_FR.json",
+            (data) => {
+                fr_FR = data.data;
+                fr_FR_Initialised = true;
+            })
+
+        async function checkFlag_fr_FR_Initialised(callBack) {
+            // console.debug("callBack :", callBack);
+            if (fr_FR_Initialised === false) {
+                window.setTimeout(checkFlag_fr_FR_Initialised, 500, arguments = callBack); /* this checks the flag every 100 milliseconds*/
+            } else {
+                callBack();
+            }
+        }
+
+        checkFlag_fr_FR_Initialised(function() {
+            // console.debug("fr_FR :", fr_FR);
+        });
+    </script>
+
+</head>
+
+<body>
+    <section id="input">
+        <h1>Voyelles</h1>
+        <ul>
+            <li>[i]/[j]<span>&nbsp;</span><strong>i</strong>l, v<strong>i</strong>e, l<strong>y</strong>s, except<strong>i</strong>on</li>
+            <li>[e]<span>&nbsp;</span>bl<strong>é</strong>, nag<strong>er, é</strong>t<strong>é</strong></li>
+            <li>[ɛ]<span>&nbsp;</span>p<strong>ai</strong>x, bleu<strong>et</strong>, p<strong>e</strong>rsil, bal<strong>ei</strong>ne</li>
+            <li>[a]/[ɑ]<span>&nbsp;</span>t<strong>a</strong>ble, p<strong>a</strong>tte, mor<strong>a</strong>l, b<strong>a</strong>s, p<strong>â</strong>te, dr<strong>a</strong>p, écl<strong>a</strong>t</li>
+            <li>[ɔ]/[o]<span>&nbsp;</span>m<strong>o</strong>rt, angl<strong>o</strong>ph<strong>o</strong>ne, acr<strong>o</strong>p<strong>o</strong>le, rh<strong>u</strong>m, d<strong>o</strong>s, <strong>au</strong>be, <strong>eau</strong>, r<strong>ô</strong>le</li>
+            <li>[u]/[w]<span>&nbsp;</span>r<strong>ou</strong>e, c<strong>oû</strong>t, </span>b<strong>oi</strong>te (ou+a), <strong>w</strong>apiti</li>
+            <li>[y]/[ɥ]/[ʊ]<span>&nbsp;</span>n<strong>u</strong>e, têt<strong>u</strong>, br<strong>u</strong>ine, bro<strong>w</strong>ser</li>
+            <li>[ø]/[œ]/[ə]<span>&nbsp;</span>bl<strong>eu</strong>, v<strong>œu</strong>, j<strong>eû</strong>ne, b<strong>eu</strong>rre, m<strong>eu</strong>ble, <strong>œu</strong>f, l<strong>e</strong>, d<strong>e</strong>nier, m<strong>e</strong>nuet</li>
+            <li>[ẽ]/[œ̃]<span>&nbsp;</span>mat<strong>in</strong>, pl<strong>ein</strong>, m<strong>ain</strong>, l<strong>un</strong>di, déf<strong>un</strong>t, h<strong>um</strong>ble</li>
+            <li>[ã]<span>&nbsp;</span>r<strong>an</strong>g, d<strong>en</strong>t, t<strong>em</strong>ps, <strong>am</strong>bre</li>
+            <li>[ɔ̃]<span>&nbsp;</span>b<strong>on</strong>, n<strong>om</strong>bre</li>
+        </ul>
+
+        <h1>Consonnes</h1>
+        <ul>
+            <li>[p]<span>&nbsp;</span><strong>p</strong>atrie, cou<strong>p</strong>e, ja<strong>pp</strong>er</li>
+            <li>[t]<span>&nbsp;</span><strong>t</strong>erre, vi<strong>t</strong>e, <strong>th</strong>é, be<strong>tt</strong>e</li>
+            <li>[k]<span>&nbsp;</span><strong>c</strong>ol, <strong>qu</strong>i, ba<strong>c</strong>, <strong>k</strong>aya<strong>k</strong></li>
+            <li>[b]<span>&nbsp;</span><strong>b</strong>as, no<strong>b</strong>le, ra<strong>bb</strong>in</li>
+            <li>[d]<span>&nbsp;</span><strong>d</strong>anse, lai<strong>d</strong>e, a<strong>dd</strong>itif</li>
+            <li>[g]<span>&nbsp;</span><strong>g</strong>auche, va<strong>gu</strong>e, <strong>gu</strong>ide</li>
+            <li>[f]<span>&nbsp;</span><strong>f</strong>ou, veu<strong>f</strong>, <strong>ph</strong>rase</li>
+            <li>[v]<span>&nbsp;</span><strong>v</strong>rai, trê<strong>v</strong>e, <strong>w</strong>agon</li>
+            <li>[s]<span>&nbsp;</span><strong>s</strong>e, <strong>c</strong>e, balan<strong>ç</strong>oire, tre<strong>ss</strong>e, ra<strong>t</strong>ion, <strong>sc</strong>ience</li>
+            <li>[z]<span>&nbsp;</span><strong>z</strong>oo, a<strong>z</strong>ote, poi<strong>s</strong>on, pri<strong>s</strong>e</li>
+            <li>[ʃ]<span>&nbsp;</span><strong>ch</strong>eval, va<strong>ch</strong>e, <strong>sch</strong>isme</li>
+            <li>[ʒ]<span>&nbsp;</span><strong>j</strong>ambe, gor<strong>g</strong>e, <strong>ge</strong>ai</li>
+            <li>[l]<span>&nbsp;</span><strong>l</strong>une, so<strong>l</strong>eil</li>
+            <li>[ʀ]/[ʁ]<span>&nbsp;</span><strong>r</strong>iz, cui<strong>r</strong>, p<strong>r</strong>ix</li>
+            <li>[m]<span>&nbsp;</span><strong>m</strong>usique, a<strong>m</strong>our, gra<strong>mm</strong>e</li>
+            <li>[n]<span>&nbsp;</span><strong>n</strong>uit, so<strong>nn</strong>er, bé<strong>n</strong>ir</li>
+            <li>[ɲ]/[ŋ]<span>&nbsp;</span>ga<strong>gn</strong>er, li<strong>gn</strong>e, joggi<strong>ng</strong></li>
+        </ul>
+    </section>
+    <section id="output">
+
+        <button onclick="copyToClipboard()">Copy data json to clipboard</button>
+
+        <table id="output_table">
+            <tr>
+                <th>V/C</th>
+                <th>Phonetique</th>
+                <th>Exemples</th>
+            </tr>
+            <!-- <tr>
+                <td>Voyelle</td>
+                <td>[i]</td>
+                <td><strong>i</strong>l, v<strong>i</strong>e, l<strong>y</strong>s</td>
+            </tr> -->
+        </table>
+    </section>
+
+    <script>
+        const regIPA = /(?<=\[).{1,2}(?=\])/g;
+        const regExemple = /(?<=<span>&nbsp;<\/span>).*/g;
+        let voyellesHTMLList = $("#input").children("ul").get(0).children;
+        // console.debug("voyellesHTMLList :", voyellesHTMLList);
+        let voyelles = [];
+        for (let li of voyellesHTMLList) {
+            let data = li.innerHTML;
+
+            let IPA = [];
+            for (let match of[...data.matchAll(regIPA)]) {
+                IPA.push(match[0]);
+            }
+
+            voyelles.push({
+                IPA: IPA,
+                Exemples: data.match(regExemple)[0].split(", ")
+            });
+        }
+        console.debug("voyelles :", voyelles);
+
+        let consonnesHTMLList = $("#input").children("ul").get(1).children;
+        // console.debug("consonnesHTMLList :", consonnesHTMLList);
+        let consonnes = [];
+        for (let li of consonnesHTMLList) {
+            let data = li.innerHTML;
+
+            let IPA = [];
+            for (let match of[...data.matchAll(regIPA)]) {
+                IPA.push(match[0]);
+            }
+
+            consonnes.push({
+                IPA: IPA,
+                Exemples: data.match(regExemple)[0].split(", ")
+            });
+        }
+        console.debug("consonnes :", consonnes);
+
+        let fr_Vocal = [];
+
+        voyelles.forEach(voyelle => {
+            fr_Vocal.push({
+                type: "V",
+                IPA: voyelle.IPA,
+                Exemples: voyelle.Exemples
+            });
+        });
+
+        consonnes.forEach(consonne => {
+            fr_Vocal.push({
+                type: "C",
+                IPA: consonne.IPA,
+                Exemples: consonne.Exemples
+            });
+        });
+
+        navigator.clipboard.writeText(JSON.stringify(fr_Vocal));
+
+
+
+
+        let output_table = $("#output_table").get(0);
+
+        for (let i = 0; i < voyelles.length; i++) {
+            const row = document.createElement("tr");
+            let cell1 = document.createElement("td");
+            cell1.textContent = "Voyelle"
+            row.appendChild(cell1);
+            let cell2 = document.createElement("td");
+            cell2.textContent = "/" + voyelles[i].IPA.join("/, /") + "/"
+            row.appendChild(cell2);
+            let cell3 = document.createElement("td");
+            cell3.innerHTML = voyelles[i].Exemples.join(", ")
+            row.appendChild(cell3);
+
+            output_table.appendChild(row);
+        }
+
+        for (let i = 0; i < consonnes.length; i++) {
+            const row = document.createElement("tr");
+            let cell1 = document.createElement("td");
+            cell1.textContent = "Consonne"
+            row.appendChild(cell1);
+            let cell2 = document.createElement("td");
+            cell2.textContent = "/" + consonnes[i].IPA.join("/, /") + "/"
+            row.appendChild(cell2);
+            let cell3 = document.createElement("td");
+            cell3.innerHTML = consonnes[i].Exemples.join(", ")
+            row.appendChild(cell3);
+
+            output_table.appendChild(row);
+        }
+    </script>
+
+    <script>
+        checkFlag_fr_FR_Initialised(function() {
+
+            // console.debug("fr_FR :", fr_FR);
+
+            let voyellesCopy = voyelles.slice();
+            voyellesCopy.push.apply(voyellesCopy, consonnes);
+            let allSoundsChar = [];
+            for (let i = 0; i < voyellesCopy.length; i++) {
+                allSoundsChar.push.apply(allSoundsChar, voyellesCopy[i].IPA);
+            }
+            allSoundsChar.push(" ");
+
+            // console.debug("allSoundsChar :", allSoundsChar);
+
+            function testStringAgainstArray(str, arr) {
+                let weirdCharList = [];
+                for (let i = 0; i < str.length; i++) {
+                    if (!arr.includes(str.charAt(i))) {
+                        weirdCharList.push(str.charAt(i));
+                    }
+                }
+                return weirdCharList;
+            }
+
+            function uniq_fast(a) {
+                var seen = {};
+                var out = [];
+                var len = a.length;
+                var j = 0;
+                for (var i = 0; i < len; i++) {
+                    var item = a[i];
+                    if (seen[item] !== 1) {
+                        seen[item] = 1;
+                        out[j++] = item;
+                    }
+                }
+                return out;
+            }
+
+            let char = [];
+            for (let i = 0; i < fr_FR.length; i++) {
+                const sound = fr_FR[i][1].replaceAll('/', '');
+                char.push.apply(char, testStringAgainstArray(sound, allSoundsChar));
+            }
+
+            if (char.length > 0) {
+                console.error("Mismatch chars found :", uniq_fast(char));
+            }
+
+        });
+    </script>
+
+    <script>
+        function copyToClipboard() {
+
+            let res = [];
+
+            voyelles.forEach(voyelle => {
+                res.push({
+                    type: "V",
+                    IPA: voyelle.IPA,
+                    Exemples: voyelle.Exemples
+                });
+            });
+
+            consonnes.forEach(consonne => {
+                res.push({
+                    type: "C",
+                    IPA: consonne.IPA,
+                    Exemples: consonne.Exemples
+                });
+            });
+
+            navigator.clipboard.writeText(JSON.stringify(res));
+
+        }
+    </script>
+
+</body>
+
+</html>
