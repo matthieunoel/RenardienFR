@@ -5,12 +5,12 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width  initial-scale=1.0">
-    <title>Trunic things</title>
+    <title>Fr vers Renardien</title>
 
     <style>
         @font-face {
             font-family: "Tunic";
-            src: url("/font/Tunic.woff") format("woff2");
+            src: url("./font/Tunic.woff") format("woff2");
         }
         
         html body {
@@ -134,7 +134,7 @@
                 fr_FR_vocal = data;
 
                 const firstString = "b d f ɡ h dʒ k ɫ m n ŋ p ɹ s ʃ ʒ t T ð tʃ v w j z";
-                const secondString = "ə æ ɪ ʊ ɛ ɔ ɑ oʊ aɪ ɑɹ ɝ u i ɔɪ ɔɹ eɪ iɹ ɛɹ ʊs aʊ";
+                const secondString = "ə æ ɪ ɛ ɔ oʊ aɪ ɑɹ ɝ u i ɔɪ ɔɹ eɪ iɹ ɛɹ ʊs aʊ ʊ  ɑ";
 
                 const consonnes_tunic = firstString.split(" ");
                 const voyelles_tunic = secondString.split(" ");
@@ -221,6 +221,7 @@
             words.forEach(word => {
                 const newWord = fr_FR_words.find(e => e[0].toLowerCase() == word.toLowerCase());
                 if (newWord == undefined) {
+                    // todo : faire une boucle de rétroaction sur les échecs. Dans le cas "Crâne d'oeuf", on a le ' et le oe ...
                     // gestion des '
                     if (word.indexOf("'") > -1) {
                         let subWords = word.split("'");
@@ -372,7 +373,7 @@
     </script> -->
 
     <script>
-        checkFlag_fr_FR_words_Initialised(function() {
+        checkFlag_fr_FR_vocal_Initialised(function() {
 
             let voyelles_fr = fr_FR_vocal.filter(e => {
                 return e.Type === "V"
@@ -432,6 +433,44 @@
                 tableConsonnes.appendChild(row);
             }
 
+        });
+    </script>
+
+    <script>
+        checkFlag_fr_FR_vocal_Initialised(() => {
+            var elements = $("#tablesSection td.tunic");
+            var target = $("#inputSection td.tunic");
+            // console.log("target :", target);
+
+            elements.on('mouseover', function(event) {
+                const char = event.target.innerText;
+                $(event.target).css("background-color", "tomato");
+
+                //// Replace every A in the content of $("#inputSection td.tunic") with the new span
+                // $("#inputSection td.tunic").html(function(index, oldHtml) {
+                //     const regex = new RegExp(`.${char}`, 'g');
+                //     var newSpan = $("<span>").css("color", "tomato").text(char);
+                //     return oldHtml.replaceAll(regex, newSpan.prop('outerHTML'));
+                // });
+
+                // Replace all matches of the regex with the new span
+                $("#inputSection td.tunic").html(function(index, oldHtml) {
+                    const regex = new RegExp(`.?${char}.?`, 'g');
+                    let newSpan = $("<span>").css("color", "tomato");
+                    return oldHtml.replace(regex, function(match) {
+                        return newSpan.clone().text(match).prop('outerHTML');
+                    });
+                })
+
+
+            });
+            elements.on('mouseout', function(params) {
+                $(event.target).css("background-color", "");
+                $("#inputSection td.tunic span").replaceWith(function() {
+                    return $(this).text();
+                });
+            });
+            // elements.on('click', highlightRunic);
         });
     </script>
 
