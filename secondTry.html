@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width  initial-scale=1.0">
+    <title>Fr vers Renardien</title>
+
+    <style>
+        @font-face {
+            font-family: "Tunic";
+            src: url("./font/Tunic.woff") format("woff2");
+        }
+        
+        html body {
+            margin: 0;
+            padding: 2em;
+            padding-bottom: 0;
+            display: flex;
+            justify-content: start;
+            align-items: center;
+            min-height: calc(100vh - (2 * 2em));
+            width: calc(100vw - (2 * 2em));
+            flex-flow: column;
+            overflow-x: hidden;
+            background-color: #1e1e1f;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        
+        section {
+            width: 100%;
+            margin-bottom: 2em;
+        }
+        
+        h1 {
+            background-color: #3c3c42;
+            color: white;
+            padding: 2vh 5vh;
+            font-size: xx-large;
+        }
+        
+        table {
+            /* margin-bottom: 2em; */
+            width: 100%;
+        }
+        
+        table tr td,
+        table tr th,
+        p {
+            color: white;
+            background-color: #3c3c42;
+            border: 1px black solid;
+            min-width: 1em;
+            min-height: 1.5em;
+            padding: 0.3em;
+            text-align: center;
+        }
+        
+        .tunic {
+            font-family: Tunic;
+            font-size: 2em;
+        }
+        
+        #inputSection {
+            font-size: 2.5em;
+        }
+        
+        #inputSection input {
+            width: 90%;
+            height: 95%;
+            color: white;
+            background-color: #5d5d64;
+            border: none;
+            min-width: 1em;
+            min-height: 1.5em;
+            padding: 0.3em;
+            text-align: center;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.9em;
+        }
+        
+        #tablesSection {
+            display: flex;
+            flex-flow: row;
+            justify-content: space-between;
+            align-items: start;
+        }
+        
+        #tablesSection table {
+            margin: 0px 1em;
+            width: 100%;
+        }
+        
+        #tablesSection table .tunic {
+            font-weight: bold;
+        }
+        
+        #tablesSection table .tunic:hover {
+            background-color: tomato;
+        }
+    </style>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+    <script>
+        // ##### Init fr_FR #####
+
+        let fr_FR_words;
+        let fr_FR_word_Initialised = false;
+        $.getJSON("./fr_FR.json",
+            (data) => {
+                fr_FR_words = data.data;
+                fr_FR_word_Initialised = true;
+            })
+
+        function checkFlag_fr_FR_words_Initialised(callBack) {
+            // console.debug("callBack :", callBack);
+            if (fr_FR_word_Initialised === false) {
+                window.setTimeout(checkFlag_fr_FR_words_Initialised, 500, arguments = callBack); /* this checks the flag every 100 milliseconds*/
+            } else {
+                callBack();
+            }
+        }
+
+        // checkFlag_fr_FR_words_Initialised(function() {
+        //     console.debug("fr_FR :", fr_FR_words);
+        // });
+    </script>
+
+    <script>
+        // ##### Init fr_FR_vocal #####
+
+        let fr_FR_vocal;
+        let fr_FR_vocal_Initialised = false;
+        $.getJSON("./fr_FR_vocal.json",
+            (data) => {
+                fr_FR_vocal = data;
+
+                const firstString = "b d f ɡ h dʒ k ɫ m n ŋ p ɹ s ʃ ʒ t T ð tʃ v w j z";
+                const secondString = "ə æ ɪ ɛ ɔ oʊ aɪ ɑɹ ɝ u i ɔɪ ɔɹ eɪ iɹ ɛɹ ʊs aʊ ʊ  ɑ";
+
+                const consonnes_tunic = firstString.split(" ");
+                const voyelles_tunic = secondString.split(" ");
+
+                let indexV = 0;
+                let indexC = 0;
+                for (let i = 0; i < fr_FR_vocal.length; i++) {
+                    if (fr_FR_vocal[i].Type === "V") {
+                        fr_FR_vocal[i].Tunic = voyelles_tunic[indexV];
+                        indexV++;
+                    } else {
+                        fr_FR_vocal[i].Tunic = consonnes_tunic[indexC];
+                        indexC++;
+                    }
+                }
+
+                fr_FR_vocal_Initialised = true;
+
+                // console.debug("fr_FR_vocal :", fr_FR_vocal);
+            })
+
+        function checkFlag_fr_FR_vocal_Initialised(callBack) {
+            // console.debug("callBack :", callBack);
+            if (fr_FR_vocal_Initialised === false) {
+                window.setTimeout(checkFlag_fr_FR_vocal_Initialised, 500, arguments = callBack); /* this checks the flag every 100 milliseconds*/
+            } else {
+                callBack();
+            }
+        }
+    </script>
+</head>
+
+<body>
+
+    <section>
+        <h1>Traduction français vers renardien (ou Tunic / Trunic)</h1>
+    </section>
+
+    <section>
+        <table id="inputSection">
+            <tr>
+                <td>
+                    <input type="text" placeholder="Ecrire ici">
+                </td>
+            </tr>
+            <tr>
+                <td class="tunic">?</td>
+            </tr>
+        </table>
+    </section>
+
+    <section id="tablesSection">
+        <table id="tableVoyelles">
+            <tr>
+                <th>Son</th>
+                <th>Lettre</th>
+                <th>Rune</th>
+                <th>Exemples</th>
+            </tr>
+        </table>
+
+        <table id="tableConsonnes">
+            <tr>
+                <th>Son</th>
+                <th>Lettre</th>
+                <th>Rune</th>
+                <th>Exemples</th>
+            </tr>
+        </table>
+    </section>
+
+    <!-- Scripts section -->
+
+    <script>
+        // function FrToVocalFr(input) {
+
+        //     let words = input.trim().split(" ");
+        //     // console.debug("words :", words);
+
+        //     let res = [];
+        //     words.forEach(word => {
+        //         const newWord = fr_FR_words.find(e => e[0].toLowerCase() == word.toLowerCase());
+        //         if (newWord == undefined) {
+        //             // todo : faire une boucle de rétroaction sur les échecs. Dans le cas "Crâne d'oeuf", on a le ' et le oe ...
+        //             // gestion des '
+        //             if (word.indexOf("'") > -1) {
+        //                 let subWords = word.split("'");
+        //                 for (let i = 0; i < subWords.length; i++) {
+        //                     const subWord = subWords[i];
+        //                     let newSubWord = undefined;
+        //                     if (i == 0) {
+        //                         newSubWord = fr_FR_words.find(e => e[0].toLowerCase() == (subWord.toLowerCase() + "'"))
+        //                         console.log();
+        //                         if (newSubWord == undefined) {
+        //                             newSubWord = fr_FR_words.find(e => e[0].toLowerCase() == subWord.toLowerCase())
+        //                         }
+        //                         if (newSubWord == undefined) {
+        //                             newSubWord = fr_FR_words.find(e => e[0].toLowerCase() == ("'" + subWord.toLowerCase()))
+        //                         }
+        //                     } else if (i == (subWords.length - 1)) {
+        //                         newSubWord = fr_FR_words.find(e => e[0].toLowerCase() == ("'" + subWord.toLowerCase()))
+        //                         if (newSubWord == undefined) {
+        //                             newSubWord = fr_FR_words.find(e => e[0].toLowerCase() == (subWord.toLowerCase() + "'"))
+        //                         }
+        //                         if (newSubWord == undefined) {
+        //                             newSubWord = fr_FR_words.find(e => e[0].toLowerCase() == subWord.toLowerCase())
+        //                         }
+        //                     } else {
+        //                         newSubWord = fr_FR_words.find(e => e[0].toLowerCase() == subWord.toLowerCase())
+        //                         if (newSubWord == undefined) {
+        //                             newSubWord = fr_FR_words.find(e => e[0].toLowerCase() == (subWord.toLowerCase() + "'"))
+        //                         }
+        //                         if (newSubWord == undefined) {
+        //                             newSubWord = fr_FR_words.find(e => e[0].toLowerCase() == ("'" + subWord.toLowerCase()))
+        //                         }
+        //                     }
+
+        //                     if (newSubWord == undefined) {
+        //                         res.push("?");
+        //                     } else {
+        //                         if (i == 0) {
+        //                             res.push(newSubWord[1].replaceAll("/", ""));
+        //                         } else {
+        //                             res[res.length - 1] = res[res.length - 1] + newSubWord[1].replaceAll("/", "");
+        //                         }
+        //                     }
+        //                 }
+        //             } else if (word.indexOf('oe') > -1) {
+        //                 const newWordAgain = fr_FR_words.find(e => e[0].toLowerCase() == word.replaceAll("oe", "œ").toLowerCase());
+        //                 if (newWordAgain == undefined) {
+        //                     res.push("?");
+        //                 } else {
+        //                     res.push(newWordAgain[1].replaceAll("/", ""));
+        //                 }
+        //             } else {
+        //                 res.push("?");
+        //             }
+        //         } else {
+        //             res.push(newWord[1].replaceAll("/", ""));
+        //         }
+        //     });
+
+        //     // console.debug("res :", res);
+        //     return res.join(" ");
+        // }
+
+        function FrVocalToTunic(input) {
+
+            let voyelles_fr = fr_FR_vocal.filter(e => {
+                return e.Type === "V"
+            });
+
+            let consonnes_fr = fr_FR_vocal.filter(e => {
+                return e.Type === "C"
+            })
+
+            let res = [];
+
+            for (let i = 0; i < Array.from(input).length; i++) {
+                let character = Array.from(input)[i];
+
+                // console.log("character :", character);
+
+                if (character === " ") {
+                    res.push(" ");
+                    continue;
+                }
+                var vocal = fr_FR_vocal.filter(e => {
+                    return e.IPA.includes(character);
+                })
+
+                if (vocal[0] == undefined) {
+                    if (Array.from(input)[i - 1] != undefined && Array.from(input)[i - 1] != " ") {
+                        character = Array.from(input)[i - 1] + character;
+                        vocal = fr_FR_vocal.filter(e => {
+                            return e.IPA.includes(character);
+                        });
+                        if (vocal[0] != undefined) {
+                            res[res.length - 1] = vocal[0].Tunic;
+                        } else {
+                            res.push("?");
+                        }
+                    }
+                } else {
+                    res.push(vocal[0].Tunic);
+                }
+            }
+
+            return res.join("");
+
+        }
+
+        function updateBloc() {
+            // var input = $("#inputSection").children().first().children("tr:nth-child(1)").children("td:first-child").children("input").get(0).value;
+            // var vocal = FrToVocalFr(input);
+            var vocal = $("#inputSection").children().first().children("tr:nth-child(1)").children("td:first-child").children("input").get(0).value;
+            var tunic = FrVocalToTunic(vocal);
+
+            // console.log("Result : \"" + input + "\", \"" + vocal + "\", \"" + tunic + "\"");
+            console.log("Result : \"" + vocal + "\", \"" + tunic + "\"");
+
+            // $("#inputSection").children().first().children("tr:nth-child(1)").children("td:first-child").get(0).innerText = vocal;
+            $("#inputSection").children().first().children("tr:nth-child(2)").children("td:first-child").get(0).innerText = tunic;
+        }
+
+        checkFlag_fr_FR_words_Initialised(function() {
+            checkFlag_fr_FR_vocal_Initialised(function() {
+                updateBloc();
+                $("#inputSection").children().first().children("tr:nth-child(1)").children("td:first-child").children("input").bind('input', updateBloc);
+            });
+        });
+    </script>
+
+    <!-- <script>
+        (function() {
+            let id = "tableVoyelles";
+
+            const table = document.createElement("table");
+
+            for (let i = 0; i < voyelles.length; i++) {
+                const row = document.createElement("tr");
+
+                for (let j = 0; j < consonnes.length; j++) {
+                    const cell = document.createElement("td");
+                    cell.textContent = consonnes[j] + voyelles[i];
+                    row.appendChild(cell);
+                }
+
+                table.appendChild(row);
+            }
+
+            document.getElementById(id).innerHTML = table.innerHTML;
+        })();
+    </script> -->
+
+    <script>
+        checkFlag_fr_FR_vocal_Initialised(function() {
+
+            let voyelles_fr = fr_FR_vocal.filter(e => {
+                return e.Type === "V"
+            });
+
+            let consonnes_fr = fr_FR_vocal.filter(e => {
+                return e.Type === "C"
+            })
+
+            const tableVoyelles = $("#tableVoyelles tbody").get(0);
+
+            for (let i = 0; i < voyelles_fr.length; i++) {
+                const row = document.createElement("tr");
+
+                const cell1 = document.createElement("td");
+                cell1.innerText = "/" + voyelles_fr[i].IPA.join("/, /") + "/";
+                row.appendChild(cell1);
+
+                const cell2 = document.createElement("td");
+                cell2.innerText = voyelles_fr[i].Libelle;
+                row.appendChild(cell2);
+
+                const cell3 = document.createElement("td");
+                cell3.classList.add("tunic");
+                cell3.innerText = voyelles_fr[i].Tunic;
+                row.appendChild(cell3);
+
+                const cell4 = document.createElement("td");
+                cell4.innerHTML = voyelles_fr[i].Exemples.join(", ");
+                row.appendChild(cell4);
+
+                tableVoyelles.appendChild(row);
+            }
+
+            const tableConsonnes = $("#tableConsonnes tbody").get(0);
+
+            for (let i = 0; i < consonnes_fr.length; i++) {
+                const row = document.createElement("tr");
+
+                const cell1 = document.createElement("td");
+                cell1.innerText = "/" + consonnes_fr[i].IPA.join("/, /") + "/";
+                row.appendChild(cell1);
+
+                const cell2 = document.createElement("td");
+                cell2.innerText = consonnes_fr[i].Libelle;
+                row.appendChild(cell2);
+
+                const cell3 = document.createElement("td");
+                cell3.classList.add("tunic");
+                cell3.innerText = consonnes_fr[i].Tunic;
+                row.appendChild(cell3);
+
+                const cell4 = document.createElement("td");
+                cell4.innerHTML = consonnes_fr[i].Exemples.join(", ");
+                row.appendChild(cell4);
+
+                tableConsonnes.appendChild(row);
+            }
+
+        });
+    </script>
+
+    <script>
+        checkFlag_fr_FR_vocal_Initialised(() => {
+            var elements = $("#tablesSection td.tunic");
+            var target = $("#inputSection td.tunic");
+            // console.log("target :", target);
+
+            elements.on('click', function(event) {
+                // const char = event.target.innerText;
+
+                const element = $(event.target);
+                const sonTr = element.parent().find("td")[0];
+                console.log("sonTr :", sonTr);
+
+                // $(event.target).css("background-color", "tomato");
+
+                $("#inputSection").children().first().children("tr:nth-child(2)").children("td:first-child").get(0).innerText += char;
+
+                //// Replace every A in the content of $("#inputSection td.tunic") with the new span
+                // $("#inputSection td.tunic").html(function(index, oldHtml) {
+                //     const regex = new RegExp(`.${char}`, 'g');
+                //     var newSpan = $("<span>").css("color", "tomato").text(char);
+                //     return oldHtml.replaceAll(regex, newSpan.prop('outerHTML'));
+                // });
+
+                // Replace all matches of the regex with the new span
+                // $("#inputSection td.tunic").html(function(index, oldHtml) {
+                //     const regex = new RegExp(`.?${char}.?`, 'g');
+                //     let newSpan = $("<span>").css("color", "tomato");
+                //     return oldHtml.replace(regex, function(match) {
+                //         return newSpan.clone().text(match).prop('outerHTML');
+                //     });
+                // })
+
+                updateBloc();
+
+            });
+        });
+    </script>
+
+</body>
+
+<!-- CREDITS -->
+<!-- Tunic font from http://trunic.wardbox.com/ -->
+<!-- Data source for IPA from https://raw.githubusercontent.com/open-dict-data/ipa-dict/master/data/fr_FR.txt -->
+
+</html>
