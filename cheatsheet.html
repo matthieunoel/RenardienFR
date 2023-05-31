@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width  initial-scale=1.0">
+    <title>Renardien FR - Cheat sheet</title>
+
+    <style>
+        @font-face {
+            font-family: "Tunic";
+            src: url("./font/Tunic.woff") format("woff2");
+        }
+        
+        .tunic {
+            font-family: Tunic;
+            font-size: 2em;
+            font-weight: bolder;
+            margin: 0.2em;
+            margin-right: 0;
+            padding-left: 0.2em;
+        }
+        
+        html body {
+            margin: 0;
+            padding: 2em;
+            padding-bottom: 0;
+            display: flex;
+            justify-content: start;
+            align-items: center;
+            min-height: calc(100vh - (2 * 2em));
+            width: calc(100vw - (2 * 2em));
+            flex-flow: column;
+            overflow-x: hidden;
+            background-color: #1e1e1f;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        
+        #page {
+            min-height: 29.7cm;
+            min-width: 21cm;
+            max-width: 21cm;
+            background-color: #fff;
+            margin-bottom: 2em;
+        }
+        
+        #page div {
+            margin: 2.5cm;
+            width: calc(21cm - 2 * 2.5cm);
+            min-height: calc(29.7cm - 2 * 2.5cm);
+            overflow: hidden;
+        }
+        
+        #tableSection {
+            margin-top: 1.5em;
+            width: 100%;
+        }
+        
+        #tableSection table {
+            background-color: #f5f7f8;
+            margin-bottom: 1.5em;
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        #tableSection>table>tr>th,
+        #tableSection>table>tr>td {
+            padding: 0.1em 0.4em;
+            min-width: 2em;
+            text-align: left;
+            max-width: 5em!important;
+        }
+        
+        #tableSection table tr th {
+            background-color: #2a2b2b;
+            color: #fff;
+            padding: 0.5em 0;
+        }
+        
+        #tableSection table tr:nth-child(odd) {
+            background-color: #dde0e1;
+        }
+    </style>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+    <script>
+        // ##### Init fr_FR #####
+
+        let fr_FR_words;
+        let fr_FR_word_Initialised = false;
+        $.getJSON("./fr_FR.json",
+            (data) => {
+                fr_FR_words = data.data;
+                fr_FR_word_Initialised = true;
+            })
+
+        function checkFlag_fr_FR_words_Initialised(callBack) {
+            // console.debug("callBack :", callBack);
+            if (fr_FR_word_Initialised === false) {
+                window.setTimeout(checkFlag_fr_FR_words_Initialised, 500, arguments = callBack); /* this checks the flag every 100 milliseconds*/
+            } else {
+                callBack();
+            }
+        }
+
+        // checkFlag_fr_FR_words_Initialised(function() {
+        //     console.debug("fr_FR :", fr_FR_words);
+        // });
+    </script>
+
+    <script>
+        // ##### Init fr_FR_vocal #####
+
+        let fr_FR_vocal;
+        let fr_FR_vocal_Initialised = false;
+        $.getJSON("./fr_FR_vocal.json",
+            (data) => {
+                fr_FR_vocal = data;
+
+                const firstString = "b d f ɡ h dʒ k ɫ m n ŋ p ɹ s ʃ ʒ t T ð tʃ v w j z";
+                const secondString = "ə æ ɪ ɛ ɔ oʊ aɪ ɑɹ ɝ u i ɔɪ ɔɹ eɪ iɹ ɛɹ ʊs aʊ ʊ  ɑ";
+
+                const consonnes_tunic = firstString.split(" ");
+                const voyelles_tunic = secondString.split(" ");
+
+                let indexV = 0;
+                let indexC = 0;
+                for (let i = 0; i < fr_FR_vocal.length; i++) {
+                    if (fr_FR_vocal[i].Type === "V") {
+                        fr_FR_vocal[i].Tunic = voyelles_tunic[indexV];
+                        indexV++;
+                    } else {
+                        fr_FR_vocal[i].Tunic = consonnes_tunic[indexC];
+                        indexC++;
+                    }
+                }
+
+                fr_FR_vocal_Initialised = true;
+
+                // console.debug("fr_FR_vocal :", fr_FR_vocal);
+            })
+
+        function checkFlag_fr_FR_vocal_Initialised(callBack) {
+            // console.debug("callBack :", callBack);
+            if (fr_FR_vocal_Initialised === false) {
+                window.setTimeout(checkFlag_fr_FR_vocal_Initialised, 500, arguments = callBack); /* this checks the flag every 100 milliseconds*/
+            } else {
+                callBack();
+            }
+        }
+    </script>
+
+</head>
+
+<body>
+    <div id="page">
+        <div>
+            <h1>Language Renardien (français)</h1>
+            <p>
+                Le renardien est une langue phonétique. Les caractères s'imbriquent pour former des sons.
+            </p>
+            <section id="tableSection">
+                <table id="tableVoyelles">
+                    <colgroup>
+                        <col span="1" style="width: 10%;">
+                        <col span="1" style="width: 10%;">
+                        <col span="1" style="width: 80%;">
+                    </colgroup>
+                    <tr>
+                        <th>Lettre</th>
+                        <th>Rune</th>
+                        <th>Exemples</th>
+                    </tr>
+                </table>
+                <table id="tableConsonnes">
+                    <colgroup>
+                        <col span="1" style="width: 10%;">
+                        <col span="1" style="width: 10%;">
+                        <col span="1" style="width: 80%;">
+                    </colgroup>
+                    <tr>
+                        <th>Lettre</th>
+                        <th>Rune</th>
+                        <th>Exemples</th>
+                    </tr>
+                </table>
+                <table id="ponctuationTable">
+                    <colgroup>
+                        <col span="1" style="width: 50%;">
+                        <col span="1" style="width: 50%;">
+                        <col span="1" style="width: 0; position: relative; right: 25%; color: #2a2b2b;">
+                    </colgroup>
+                    <tr>
+                        <th colspan="2">Exemples</th>
+                    </tr>
+                    <tr>
+                        <td>
+                            "Ma" => /ma/
+                        </td>
+                        <td class="tunic">
+                            ʃɛ
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            "Ame" => /am/
+                        </td>
+                        <td>
+                            <span class="tunic" style="position: relative; right: 0.25em">ɛʃ</span> (Noter le <span style="color: tomato;">petit rond</span>)
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            "Chemin" => /ʃəmɛ̃/
+                        </td>
+                        <td class="tunic">
+                            ŋɑɹʃɝ
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            "Aller tout droit" => /ale tut dʁwa/
+                        </td>
+                        <td>
+                            <span class="tunic" style="position: relative; right: 0.25em;">ɛ</span> <span class="tunic" style="position: relative; right: 0.75em;">ɹæ doʊ hsoʊɛ</span>
+                        </td>
+                    </tr>
+                </table>
+            </section>
+        </div>
+    </div>
+
+    <script>
+        checkFlag_fr_FR_vocal_Initialised(function() {
+
+            let voyelles_fr = fr_FR_vocal.filter(e => {
+                return e.Type === "V"
+            });
+
+            let consonnes_fr = fr_FR_vocal.filter(e => {
+                return e.Type === "C"
+            })
+
+            const tableVoyelles = document.getElementById("tableVoyelles");
+
+            for (let i = 0; i < voyelles_fr.length; i++) {
+                const row = document.createElement("tr");
+
+                const cell2 = document.createElement("td");
+                cell2.innerText = voyelles_fr[i].Libelle;
+                row.appendChild(cell2);
+
+                const cell3 = document.createElement("td");
+                cell3.classList.add("tunic");
+                cell3.innerText = voyelles_fr[i].Tunic;
+                row.appendChild(cell3);
+
+                const cell4 = document.createElement("td");
+                cell4.innerHTML = voyelles_fr[i].Exemples.join(", ");
+                row.appendChild(cell4);
+
+                tableVoyelles.appendChild(row);
+            }
+
+            const tableConsonnes = document.getElementById("tableConsonnes");
+
+            for (let i = 0; i < consonnes_fr.length; i++) {
+                const row = document.createElement("tr");
+
+                const cell2 = document.createElement("td");
+                cell2.innerText = consonnes_fr[i].Libelle;
+                row.appendChild(cell2);
+
+                const cell3 = document.createElement("td");
+                cell3.classList.add("tunic");
+                cell3.innerText = consonnes_fr[i].Tunic;
+                row.appendChild(cell3);
+
+                const cell4 = document.createElement("td");
+                cell4.innerHTML = consonnes_fr[i].Exemples.join(", ");
+                row.appendChild(cell4);
+
+                tableConsonnes.appendChild(row);
+            }
+
+        });
+    </script>
+
+
+</body>
+
+<!-- CREDITS -->
+<!-- Tunic font from http://trunic.wardbox.com/ -->
+<!-- Data source for IPA from https://raw.githubusercontent.com/open-dict-data/ipa-dict/master/data/fr_FR.txt -->
+
+</html>
