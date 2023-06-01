@@ -46,9 +46,9 @@
         }
         
         #page div {
-            margin: 2.5cm;
-            width: calc(21cm - 2 * 2.5cm);
-            min-height: calc(29.7cm - 2 * 2.5cm);
+            margin: 1.5cm;
+            width: calc(21cm - 2 * 1.5cm);
+            min-height: calc(29.7cm - 2 * 1.5cm);
             overflow: hidden;
         }
         
@@ -83,32 +83,26 @@
         }
     </style>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-
-    <script>
-        // ##### Init fr_FR #####
-
-        let fr_FR_words;
-        let fr_FR_word_Initialised = false;
-        $.getJSON("./fr_FR.json",
-            (data) => {
-                fr_FR_words = data.data;
-                fr_FR_word_Initialised = true;
-            })
-
-        function checkFlag_fr_FR_words_Initialised(callBack) {
-            // console.debug("callBack :", callBack);
-            if (fr_FR_word_Initialised === false) {
-                window.setTimeout(checkFlag_fr_FR_words_Initialised, 500, arguments = callBack); /* this checks the flag every 100 milliseconds*/
-            } else {
-                callBack();
+    <style>
+        @media print {
+            html body {
+                background-color: #fff;
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+            }
+            #page {
+                width: 100vw;
+            }
+            #page div {
+                margin: 0cm 1.5cm;
+            }
+            table {
+                break-inside: avoid;
             }
         }
+    </style>
 
-        // checkFlag_fr_FR_words_Initialised(function() {
-        //     console.debug("fr_FR :", fr_FR_words);
-        // });
-    </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 
     <script>
         // ##### Init fr_FR_vocal #####

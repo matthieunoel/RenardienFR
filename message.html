@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width  initial-scale=1.0">
+    <title>Renardien FR - Cheat sheet</title>
+
+    <style>
+        @font-face {
+            font-family: "Tunic";
+            src: url("./font/Tunic.woff") format("woff2");
+        }
+        
+        .tunic {
+            font-family: Tunic;
+            font-size: 2em;
+            font-weight: bolder;
+            margin: 0.2em;
+            margin-right: 0;
+            padding-left: 0.2em;
+        }
+        
+        html body {
+            margin: 0;
+            padding: 2em;
+            padding-bottom: 0;
+            display: flex;
+            justify-content: start;
+            align-items: center;
+            min-height: calc(100vh - (2 * 2em));
+            width: calc(100vw - (2 * 2em));
+            flex-flow: column;
+            overflow-x: hidden;
+            background-color: #1e1e1f;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        
+        #page {
+            min-height: 29.7cm;
+            min-width: 21cm;
+            max-width: 21cm;
+            background-color: #fff;
+            margin-bottom: 2em;
+        }
+        
+        #page>div {
+            margin: 1.5cm;
+            width: calc(21cm - 2 * 1.5cm);
+            min-height: calc(29.7cm - 2 * 1.5cm);
+            overflow: hidden;
+        }
+    </style>
+
+    <style>
+        #page>div {
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            flex-flow: column;
+        }
+        
+        .third {
+            height: calc((29.7cm - 2 * 1.5cm)/3);
+            border-bottom: dashed #000 1px;
+            display: flex;
+            flex-flow: column;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .third:nth-child(1) {
+            border-top: dashed #000 1px;
+        }
+        
+        .third>h1,
+        .special {
+            text-align: center;
+            justify-content: center;
+        }
+        
+        .special {
+            font-size: 4em;
+            border: #1e1e1f solid 2px;
+            padding: 0.5em;
+        }
+    </style>
+
+    <style>
+        @media print {
+            html body {
+                background-color: #fff;
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+            }
+            #page {
+                width: 100vw;
+            }
+            #page div {
+                margin: 0cm 1.5cm;
+            }
+        }
+    </style>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+</head>
+
+<body>
+    <div id="page">
+        <div>
+            <section class="third">
+                <h1>Déchiffrez le renardien pour connaitre la suite ...</h1>
+                <p class="tunic special">ɹɑɹ bsɔŋɝ mɑɹfsɪ ɪ bɹɛm hɑɹ ɹɔbæsɛ</p>
+            </section>
+            <script>
+                // Script de duplication
+                duplicatats = 2;
+                $(document).ready(function() {
+                    for (let i = 0; i < duplicatats; i++) {
+                        var section = $('section.third').first().clone();
+                        $('section.third').first().after(section);
+                    }
+                });
+            </script>
+        </div>
+    </div>
+
+</body>
+
+<!-- CREDITS -->
+<!-- Tunic font from http://trunic.wardbox.com/ -->
+<!-- Data source for IPA from https://raw.githubusercontent.com/open-dict-data/ipa-dict/master/data/fr_FR.txt -->
+
+</html>
