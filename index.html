@@ -232,6 +232,11 @@
 
             let res = [];
             words.forEach(word => {
+                word = word.replace(/[\.;:!\?\-\/,…\(\)\[\]]/gm, ``); // On supprime la ponctuation sauf le '
+                // console.debug('word :', word);
+                if (word == "") {
+                    return;
+                }
                 const newWord = fr_FR_words.find(e => e[0].toLowerCase() == word.toLowerCase());
                 if (newWord == undefined) {
                     // todo : faire une boucle de rétroaction sur les échecs. Dans le cas "Crâne d'oeuf", on a le ' et le oe ...
