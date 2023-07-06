@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width  initial-scale=1.0">
+    <title>Renardien FR - Cheat sheet</title>
+
+    <style>
+        @font-face {
+            font-family: "Tunic";
+            src: url("./font/Tunic.woff") format("woff2");
+        }
+        
+        .tunic {
+            font-family: Tunic;
+            font-size: 2em;
+            font-weight: bolder;
+            margin: 0.2em;
+            margin-right: 0;
+            padding-left: 0.2em;
+        }
+        
+        html body {
+            margin: 0;
+            padding: 2em;
+            padding-bottom: 0;
+            display: flex;
+            justify-content: start;
+            align-items: center;
+            min-height: calc(100vh - (2 * 2em));
+            width: calc(100vw - (2 * 2em));
+            flex-flow: column;
+            overflow-x: hidden;
+            background-color: #1e1e1f;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        
+        #page {
+            height: 29.7cm;
+            min-width: 21cm;
+            max-width: 21cm;
+            background-color: #fff;
+            margin-bottom: 2em;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        #page>div {
+            /* margin: 1.5cm; */
+            width: calc(21cm - 2 * 1.5cm);
+            min-height: calc(29.7cm - 2 * 1.5cm);
+            overflow: hidden;
+        }
+    </style>
+
+    <style>
+        #page>div {
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            flex-flow: column;
+        }
+        
+        .third {
+            min-height: calc((29.7cm - 2 * 1.5cm)/3);
+            display: flex;
+            flex-flow: column;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .third>h1,
+        .special,
+        .specialText {
+            text-align: center;
+            justify-content: center;
+            min-width: 600px;
+            max-width: 600px;
+            margin: 15px 0;
+        }
+        
+        .third>h1 {
+            font-weight: bolder;
+            background-color: #e92c0a;
+            color: #fff;
+            padding: 0.7cm;
+        }
+        
+        .special {
+            font-size: 4em;
+            border: #1e1e1f solid 2px;
+            padding: 0.6cm;
+        }
+        
+        .specialText {
+            font-size: 2em;
+            border: #1e1e1f solid 2px;
+            padding: 0.6cm;
+        }
+        
+        .highlightSpan>span {
+            background-color: #fbe604;
+        }
+        
+        .highlightSpan>span:nth-child(odd) {
+            background-color: #fbd604;
+        }
+    </style>
+
+    <style>
+        @media print {
+            html body {
+                background-color: #fff;
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+            }
+            #page {
+                width: 100vw;
+            }
+            #page div {
+                margin: 0cm 0cm;
+                position: relative;
+                bottom: 4vh;
+            }
+        }
+    </style>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+</head>
+
+<body>
+    <div id="page">
+        <div>
+            <section class="third">
+                <h1><span style="font-size: 1.4em; font-weight: 900; margin-right: 0.5em;">/!\</span> ATTENTION SOLUCE <span style="font-size: 1.4em; font-weight: 900; margin-left: 0.5em;">/!\</span> </h1>
+                <p class="tunic special">ɹɑɹ bsɔŋɝ mɑɹfsɪ ɪ bɹɛm hɑɹ ɹɔbæsɛ</p>
+                <p class="tunic special highlightSpan"><span>ɹɑɹ</span>&ensp; <span>b sɔ ŋɝ</span>&ensp; <span>mɑɹ f sɪ</span>&ensp; <span>ɪ</span><br><span>b ɹɛ m</span>&ensp; <span>hɑɹ</span>&ensp; <span>ɹɔ bæ sɛ</span></p>
+                <p class="specialText highlightSpan">\ <span>lə</span>&ensp; <span>p ʁɔ ʃɛ̃</span>&ensp; <span>sə k ʁɛ</span>&ensp; <span>ɛ</span><br><span>p la s</span>&ensp; <span>də</span>&ensp; <span>lɔ pe ʁa</span> \</p>
+                <p class="specialText highlightSpan"><span>Le</span>&ensp; <span>p ro chain</span>&ensp; <span>se c ret</span>&ensp; <span>est</span><br><span>p la ce</span>&ensp; <span>de</span>&ensp; <span>L'o pé ra</span></p>
+                <p class="specialText" style="color:#d3d3d3">Le prochain secret est place de l'opéra</p>
+                <h1><span style="font-size: 1.4em; font-weight: 900; margin-right: 0.5em;">/!\</span> ATTENTION SOLUCE <span style="font-size: 1.4em; font-weight: 900; margin-left: 0.5em;">/!\</span> </h1>
+            </section>
+            <!-- <script>
+                // Script de duplication
+                duplicatats = 2;
+                $(document).ready(function() {
+                    for (let i = 0; i < duplicatats; i++) {
+                        var section = $('section.third').first().clone();
+                        $('section.third').first().after(section);
+                    }
+                });
+            </script> -->
+        </div>
+    </div>
+
+</body>
+
+<!-- CREDITS -->
+<!-- Tunic font from http://trunic.wardbox.com/ -->
+<!-- Data source for IPA from https://raw.githubusercontent.com/open-dict-data/ipa-dict/master/data/fr_FR.txt -->
+
+</html>
