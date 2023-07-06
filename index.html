@@ -107,6 +107,16 @@
         $.getJSON("./fr_FR.json",
             (data) => {
                 fr_FR_words = data.data;
+                // console.debug("fr_FR_words :", fr_FR_words[0])
+                fr_FR_words.forEach(fr_FR_word => {
+                    if (fr_FR_word[0].includes("œ")) {
+                        fr_FR_words.push([
+                            fr_FR_word[0].replaceAll("œ", "oe"),
+                            fr_FR_word[1]
+                        ]);
+                        // console.debug("fr_FR_words[fr_FR_words.length - 1] :", fr_FR_words[fr_FR_words.length - 1]);
+                    }
+                });
                 fr_FR_word_Initialised = true;
             })
 
@@ -134,10 +144,13 @@
                 fr_FR_vocal = data;
 
                 const firstString = "b d f ɡ h dʒ k ɫ m n ŋ p ɹ s ʃ ʒ t T ð tʃ v w j z";
-                const secondString = "ə æ ɪ ɛ ɔ oʊ aɪ ɑɹ ɝ u i ɔɪ ɔɹ eɪ iɹ ɛɹ ʊs aʊ ʊ  ɑ";
+                const secondString = "ə æ ɪ oʊ aɪ ɑɹ ɝ u i ɔɪ ɔɹ eɪ iɹ ɛɹ ʊs aʊ ʊ ɛ ɑ ɔ";
 
                 const consonnes_tunic = firstString.split(" ");
                 const voyelles_tunic = secondString.split(" ");
+
+                // console.debug("consonnes_tunic :", consonnes_tunic)
+                // console.debug("voyelles_tunic :", voyelles_tunic)
 
                 let indexV = 0;
                 let indexC = 0;
